@@ -33,18 +33,47 @@ namespace ConsoleUI
 
             // Create a list of Vehicle called vehicles
 
+            List<Vehicle> vehicles = new List<Vehicle>();
+
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
              * - new it up as one of each derived class
              * Set the properties with object initializer syntax
              */
 
+            Car car1 = new Car() { Make = "Metallia", Model = "Aluminum", Year = "1993", HasTrunk = false };
+            Motorcycle motor1 = new Motorcycle() { Make = "Metallia", Model = "Polonium", Year = "2006", HasSidecar = true };
+            Vehicle car2 = new Car() { Make = "Metallia", Model = "Gold", Year = "2020", HasTrunk = true };
+            Vehicle motor2 = new Motorcycle() { Make = "Metallia", Model = "Uranium", Year = "2022", HasSidecar = false };
+
+            vehicles.Add(car1);
+            vehicles.Add(motor1);
+            vehicles.Add(car2);
+            vehicles.Add(motor2);
+
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate over each of the properties
              */
 
+            foreach (Vehicle vehicle in vehicles)
+            {
+                vehicle.VehicleStats();
+                Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("");
+
             // Call each of the drive methods for one car and one motorcycle
+
+            foreach (Vehicle vehicle in vehicles)
+            {
+                Console.WriteLine("Time for a virtual drive!");
+                vehicle.DriveVirtual();
+                Console.WriteLine("That was an experience. But how does it handle an abstract drive?");
+                vehicle.DriveAbstract();
+                Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=--=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            }
 
             #endregion            
             Console.ReadLine();
